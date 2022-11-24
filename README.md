@@ -72,6 +72,33 @@ Ibarat sebuah stack, `Navigator.push` mem-push sebuah route baru sehingga berada
 3. Memodifikasi `main.dart`, `form.dart`, dan `dataBudget.dart` dengan menambahkan code block drawer agar bisa menavigasi beberapa halaman.
 
 
+# Assignment 9
+## Apakah bisa melakukan data JSON tanpa membuat model?
+Kita bisa mengambil data JSON tanpa membuat model. Tetapi, tidak seperti model yang meneyediakan informasi lebih jelas, cara ini akan membuat developer sulit memahami informasi data (seperti tipe data, nama field, dll) dari tiap field data JSON tersebut, sehingga cara ini tidak direkomendasikan. 
+
+## Widget yang dipakai beserta fungsinya
+1. `Column()`: mengatur elemen secara vertikal,
+2. `Row()`: mengatur elemen secara horizontal,
+3. `Container()`: membungkus satu atau lebih widget,
+4. `Text()`: menampilkan teks atau string,
+5. `Scaffold()`: menyimpan widget-widget dasar yang membentuk struktur visual (seperti APIs) seperti Drawer, SnackBar, dll,
+6. `Align`: memberikan pengaturan alignment pada widget di dalamnya
+7. `ListTile()`: menampilkan list dan bisa menyimpan widget
+8. `AppBar()`: menampilkan widget toolbar seperti judul, dsb
+9. `Drawer()`: menavigasi beberapa route pada aplikasi
+10. `Expanded()`: menampung widget dengan kemampuan expand
+11. `ElevatedButton`: menampilkan button
+
+## Mekanisme pengambilan data JSON
+1. Melakukan fetch endpoint dengan request GET
+2. Data hasil respon di-parse dengan fungsi yang dibuat pada `mywatchlist_data.dart` di folder `model`
+3. Data hasil parse pada model digunakan dan ditampilkan di aplikasi flutter dengan getter yang sesuai
+
+## Implementasi checklist
+1. Membuat model `mywatchlist_data.dart` yang ditempatkan pada folder `/model`.
+2. Menambahkan halaman watchlist pada Drawer,
+3. Membuat halaman tampilan watchlist dan menghubungkannya dengan halaman detail dengan `onTap()`, `Navigator.pushReplacement()`, `MaterialPageRoute()` serta data item terkait,
+4. Membuat halaman detail dengan pengambilan fields yang akan ditampilkan,
 <br>
 <hr>
 2022 | reyv
