@@ -127,7 +127,8 @@ class _MyWatchlistDetailState extends State<MyWatchlistDetail> {
                               fontSize: 18,
                             )),
                         Text(
-                            widget.watchListItem.fields.watched == "TRUE"
+                            "${widget.watchListItem.fields.watched}" ==
+                                    "Watched.TRUE"
                                 ? "Watched"
                                 : "Not watched",
                             style: TextStyle(

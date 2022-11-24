@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final mywatchlist = mywatchlistFromJson(jsonString);
-
 import 'dart:convert';
 
 List<Mywatchlist> mywatchlistFromJson(String str) => List<Mywatchlist>.from(
@@ -68,7 +64,8 @@ class Fields {
 
 enum Watched { TRUE, FALSE }
 
-final watchedValues = EnumValues({"False": Watched.TRUE, "True": Watched.TRUE});
+final watchedValues =
+    EnumValues({"False": Watched.FALSE, "True": Watched.TRUE});
 
 enum Model { MYWATCHLIST_MYWATCHLIST }
 

@@ -1,11 +1,9 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:counter_7/model/mywatchlist_data.dart';
 import 'package:counter_7/page/mywatchlistDetail.dart';
 import 'package:counter_7/page/form.dart';
 import 'package:counter_7/page/dataBudget.dart';
 import 'package:counter_7/main.dart';
 import 'package:flutter/material.dart';
+import 'package:counter_7/utils/fetch.dart';
 
 class MyWatchlist extends StatefulWidget {
   const MyWatchlist({Key? key}) : super(key: key);
@@ -15,30 +13,6 @@ class MyWatchlist extends StatefulWidget {
 }
 
 class _MyWatchlistState extends State<MyWatchlist> {
-  Future<List<Mywatchlist>> fetchToDo() async {
-    var url = Uri.parse('https://pbptugas2.herokuapp.com/mywatchlist/json');
-    var response = await http.get(
-      url,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    );
-
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object ToDo
-    List<Mywatchlist> watchlist = [];
-    for (var d in data) {
-      if (d != null) {
-        watchlist.add(Mywatchlist.fromJson(d));
-      }
-    }
-
-    return watchlist;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,6 +105,13 @@ class _MyWatchlistState extends State<MyWatchlist> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(15.0),
+                              border: Border.all(
+                                color:
+                                    "${snapshot.data![index].fields.watched}" ==
+                                            "Watched.TRUE"
+                                        ? Colors.green
+                                        : Colors.red,
+                              ),
                               boxShadow: const [
                                 BoxShadow(color: Colors.black, blurRadius: 1.0)
                               ]),
@@ -145,6 +126,21 @@ class _MyWatchlistState extends State<MyWatchlist> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              Checkbox(
+                                  value:
+                                      "${snapshot.data![index].fields.watched}" ==
+                                              "Watched.TRUE"
+                                          ? true
+                                          : false,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      snapshot.data![index].fields.watched =
+                                          "${snapshot.data![index].fields.watched}" ==
+                                                  "Watched.TRUE"
+                                              ? "False"
+                                              : "True";
+                                    });
+                                  }),
                               const SizedBox(height: 10),
                             ],
                           ),
