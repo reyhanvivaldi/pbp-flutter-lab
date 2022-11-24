@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
-import 'package:counter_7/dataBudget.dart';
+import 'package:counter_7/page/dataBudget.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 
 List<Map> transaksi = [];
 
@@ -55,6 +56,16 @@ class _MyFormPageState extends State<MyFormPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const DataBudget()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Watchlist'),
+              onTap: () {
+                // Route menu ke halaman to do
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyWatchlist()),
                 );
               },
             ),
